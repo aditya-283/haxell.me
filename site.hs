@@ -61,30 +61,6 @@ main = hakyllWith config $ do
 
 config :: Configuration
 config = defaultConfiguration
-    { deployCommand = "git stash \
-                        \&& git checkout develop \
-                        \&& stack exec myblog clean \
-                        \&& echo 'Building...' \
-                        \&& stack exec myblog build \
-                        \&& git fetch --all \
-                        \&& git checkout -b master --track origin/master \
-                        \&& echo 'Syncing...' \
-                        \&& rsync -a --filter='P _site/'  \
-                            \    --filter='P _cache/'     \
-                            \    --filter='P .git/'       \
-                            \    --filter='P .gitignore'  \
-                            \    --filter='P .stack-work' \
-                            \    --delete-excluded        \
-                            \    _site/ .                 \
-                        \&& echo 'Publishing...' \
-                        \&& git add -A \
-                        \&& git commit -m 'Publish.' \
-                        \&& git push origin master:master \
-                        \&& echo 'Successfully published. Switching back to development branch' \
-                        \&& git checkout develop \
-                        \&& git branch -D master \
-                        \&& git stash pop"
-    }
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
