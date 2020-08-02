@@ -26,3 +26,4 @@ _cache/
 _site/
 .stack-work/
 .DS_Store
+README.markdown
