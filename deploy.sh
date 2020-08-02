@@ -7,6 +7,7 @@ echo $'\nBuilding...'
 stack exec myblog build
 git checkout master
 echo 'Syncing...'
+cp README.md _site/README.md
 rsync -a --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .gitignore' --filter='P .stack-work' --delete-excluded _site/ .
 echo $'\nPublishing...'
 git add -A
