@@ -5,8 +5,7 @@ env -i git checkout develop
 stack exec myblog clean
 echo $'\nBuilding...'
 stack exec myblog build
-env -i git fetch --all
-env -i git checkout -b master --track origin/master
+env -i git checkout master
 echo 'Syncing...'
 touch _site/CNAME && echo "haxell.me" >> _site/CNAME
 rsync -a --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .gitignore' --filter='P .stack-work' --delete-excluded _site/ .
