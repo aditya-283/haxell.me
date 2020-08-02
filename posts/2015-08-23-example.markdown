@@ -1,5 +1,0 @@
----
-title: example post
----
-
-I have changed this example post to reflect new KHANTENT. Let's see if this is automatically deployed to github without me doing anything more than running a simple deployment script.
