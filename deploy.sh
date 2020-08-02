@@ -1,7 +1,7 @@
 #! /bin/bash
 
-env -i git stash 
-env -i git checkout develop
+git stash 
+git checkout develop
 stack exec myblog clean
 echo $'\nBuilding...'
 stack exec myblog build
@@ -14,4 +14,4 @@ git commit -m 'Publish last commit'
 git push origin master
 echo $'\nSuccessfully published. Switching back to development branch'
 git checkout develop
-env -i git stash pop
+git stash pop
